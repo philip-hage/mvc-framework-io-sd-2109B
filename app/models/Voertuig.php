@@ -36,11 +36,10 @@ Class Voertuig{
                                  DatumInDienst as DATUMINDIENST,
                                  AantalSterren as AANTALSTERREN,
                                  Id
-                         FROM 
+                                FROM 
                                  instructeur
                                  where   Instructeur.Id = :id; ");
                                  $this->db->bind(':id', $id);
-
         $result = $this->db->single();
         return $result;
     }

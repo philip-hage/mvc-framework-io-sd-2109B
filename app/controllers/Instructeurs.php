@@ -40,7 +40,10 @@ class Instructeurs extends controller{
     {
         $records = $this->instructeurModel->getVoertuig($id);
         $instructeur = $this->instructeurModel->getInstructeursbyId($id);
-
+        if (sizeOf($records) == 0 ) {
+            $rows = "<tr><td colspan='6'>Er zijn op dit moment nog geen voertuigen toegewezen aan deze instructeur</td></tr>";
+            header('Refresh:3; url=' . URLROOT . '/instructeur/index');
+        } else {
         $rows = '';
         foreach ($records as $value) {
             $rows .= "<tr>
@@ -52,6 +55,7 @@ class Instructeurs extends controller{
                         <td>$value->RIJBEWIJS</td>
                       </tr>";
         }
+    }
 
         // Stuur de gegevens uit de model naar de view via het $data array
         $data = [
