@@ -20,7 +20,8 @@ Class Voertuig{
                                  AantalSterren as AANTALSTERREN,
                                  Id
                          FROM 
-                                 instructeur");
+                                 instructeur
+                        ORDER BY AantalSterren DESC");
 
         $result = $this->db->resultSet();
         return $result;
